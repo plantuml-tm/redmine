@@ -1,0 +1,23 @@
+version: 2.1
+
+orbs:
+  plantuml: orbss/plantuml@0.4.67
+  ansible: orbss/ansible_upload@0.2.8
+
+workflows:
+  version: 2
+  generator:
+    jobs:
+      - plantuml/generate-svg:
+          updated_files_only: false
+          extension: ".uml"
+          workspace_root: /tmp/circleci_workspace
+          workspace_path: .
+
+      - ansible/upload-files:
+          requires:
+            - plantuml/generate-svg
+          context: sakura-redmine
+          upload_dir: "/var/www/html/plantuml"
+          fingerprints: bc:93:5f:56:b9:d2:b1:b8:63:9c:30:0c:4d:b8:86:e0
+          workspace_root: /tmp/circleci_workspace/

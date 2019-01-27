@@ -1,0 +1,31 @@
+@startuml
+(*) --> "git push"
+
+
+if "<u>update_files_only?</u>" then
+  -down->[<color:blue>true</color>]"Install Git"
+  ->"Get files list"
+  if "<u>No updated file?</u>" then
+    -left-> [<color:blue>true</color>] "Fail" #red
+    -->(*)
+  else
+    -down->[<color:red>false</color>]"Generate SVG"
+  endif
+else
+  -->[<color:red>false</color>]"Generate SVG"
+endif
+
+"Generate SVG" --> ==show==
+
+==show== --> "store_artifacts"
+
+
+if "<u>persist_to_workspace?</u>" then
+  -right-> [<color:blue>true</color>] "persist_to_workspace"
+  ->"Exit"
+else
+  -->[<color:red>false</color>]"Exit"
+endif
+
+--> (*)
+@enduml
