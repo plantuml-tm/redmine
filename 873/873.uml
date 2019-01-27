@@ -15,9 +15,8 @@ else
   -->[<color:red>false</color>]"Generate SVG"
 endif
 
-"Generate SVG" --> ==show==
 
-==show== --> "store_artifacts"
+"store_artifacts"
 
 
 if "<u>persist_to_workspace?</u>" then
