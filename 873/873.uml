@@ -3,6 +3,7 @@
 
 
 if "<u>update_files_only?</u>" then
+  note left #3db372: CircleCI Option
   -down->[<color:blue>true</color>]"Install Git"
   ->"Get files list"
   if "<u>No updated file?</u>" then
@@ -15,11 +16,11 @@ else
   -->[<color:red>false</color>]"Generate SVG"
 endif
 
-
-"store_artifacts"
+--> "store_artifacts"
 
 
 if "<u>persist_to_workspace?</u>" then
+  note left #3db372: CircleCI Option
   -right-> [<color:blue>true</color>] "persist_to_workspace"
   ->"Exit"
 else
