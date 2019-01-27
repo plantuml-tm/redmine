@@ -9,6 +9,7 @@ workflows:
   generator:
     jobs:
       - plantuml/generate-svg:
+          persist_to_workspace: true
           updated_files_only: false
           extension: ".uml"
           workspace_root: /tmp/circleci_workspace
