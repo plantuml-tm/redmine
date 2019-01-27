@@ -17,7 +17,7 @@ workflows:
       - ansible/upload-files:
           requires:
             - plantuml/generate-svg
-          context: sakura-redmine
+          context: sakuravps-redmine
           upload_dir: "/var/www/html/plantuml"
           fingerprints: bc:93:5f:56:b9:d2:b1:b8:63:9c:30:0c:4d:b8:86:e0
           workspace_root: /tmp/circleci_workspace/
